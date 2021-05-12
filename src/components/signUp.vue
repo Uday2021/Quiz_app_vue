@@ -3,10 +3,14 @@
 <img class="logo" src="../assets/quiz.jpg"/>
 <h1> SignUp </h1>
 <div class = "register">
-    <input type="text" placeholder="Enter Name"/>
-    <input type="email" placeholder="Enter Email"/>
-    <input type="password" placeholder="Enter Password"/>
-    <button>SignUp</button>
+    <input type="text" v-model="name" placeholder="Enter Name"/>
+    <input type="email" v-model="email" placeholder="Enter Email"/>
+    <input type="password" v-model="password" placeholder="Enter Password"/>
+    <router-link to="/app">
+       <button @click="signUp">SignUp</button>
+    </router-link>
+
+    
 
 </div>
 </div>
@@ -14,7 +18,19 @@
 
 <script>
 export default {
-  name: 'signUp'
+  name: 'signUp',
+  data(){
+      return{
+          name:'',
+          email:'',
+          password:''
+      }
+  },
+  methods:{
+      signUp(){
+          localStorage.setItem("user-info",JSON.stringify(this.name))
+      }
+  }
 }
 </script>
 
