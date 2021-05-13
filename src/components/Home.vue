@@ -37,13 +37,18 @@ export default {
   },
   methods: {
     next() {
-      this.index++
+        this.index++
+       if(this.index<=10){
+         
+        this.numTotal++
+      }
+       
     },
     increment(isCorrect) {
       if (isCorrect) {
         this.numCorrect++
       }
-      this.numTotal++
+      // this.numTotal++
     }
   },
   mounted: function() {

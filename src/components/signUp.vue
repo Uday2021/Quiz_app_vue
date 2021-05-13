@@ -28,7 +28,10 @@ export default {
   },
   methods:{
       signUp(){
-          localStorage.setItem("user-info",JSON.stringify(this.name))
+          localStorage.setItem("user-info",JSON.stringify({
+              name:this.name,
+              email:this.email,
+              password: this.password}))
       }
   }
 }
