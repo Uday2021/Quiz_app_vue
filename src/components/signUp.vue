@@ -28,10 +28,21 @@ export default {
   },
   methods:{
       signUp(){
+          if(this.name && this.email && this.password){
           localStorage.setItem("user-info",JSON.stringify({
               name:this.name,
               email:this.email,
               password: this.password}))
+            // this.$router.push({name:'Home'})
+          }
+      }
+  },
+  mounted()
+  {
+      let user = localStorage.getItem('user-info');
+      if(user)
+      {
+         this.$router.push({name:'Home'}) 
       }
   }
 }

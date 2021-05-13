@@ -23,6 +23,14 @@ import QuestionBox from './QuestionBox.vue'
 
 export default {
   name: 'Home',
+   created()
+  {
+      let user = localStorage.getItem('user-info');
+      if(!user)
+      {
+         this.$router.push({name:'SignUp'}) 
+      }
+  },
   components: {
      Header,
     QuestionBox,

@@ -12,8 +12,8 @@ import Home from './components/Home'
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 const routes = [
-  {path: '/app',component:Home},
- {path: '/',component:signUp},
+  {path: '/app', name: 'Home',component:Home},
+ {path: '/', name: 'SignUp',component:signUp},
 ]
 
 const router = new VueRouter({
