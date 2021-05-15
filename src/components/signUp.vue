@@ -23,7 +23,8 @@ export default {
       return{
           name:'',
           email:'',
-          password:''
+          password:'',
+          messages: [],
       }
   },
   methods:{
@@ -33,7 +34,10 @@ export default {
               name:this.name,
               email:this.email,
               password: this.password}))
-            // this.$router.push({name:'Home'})
+             this.$router.push({name:'Home'})
+          }
+          else{
+              this.messages.push('all fields are required')
           }
       }
   },
