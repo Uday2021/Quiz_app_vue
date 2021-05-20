@@ -25,7 +25,7 @@
       >
         Submit
       </b-button>
-      <b-button @click="next" variant="success">
+      <b-button @click="clickNext();" variant="success">
         Next
       </b-button>
     </b-jumbotron>
@@ -75,6 +75,12 @@ export default {
     selectAnswer(index) {
       this.selectedIndex = index
     },
+
+    printResult(){
+       
+    },
+       
+
     submitAnswer() {
       let isCorrect = false
 
@@ -84,6 +90,17 @@ export default {
       this.answered = true
 
       this.increment(isCorrect)
+    },
+
+    clickNext(){
+       let isCorrect = false
+
+      if (this.selectedIndex === this.correctIndex) {
+        isCorrect = true
+         this.increment(isCorrect)
+      }
+       this.next()
+       
     },
     shuffleAnswers() {
       let answers = [...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answer]

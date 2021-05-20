@@ -1,39 +1,43 @@
 <template>
-    <div>
+  <div>
+    <Snippet v-show="loader" />
     <Header :numCorrect="numCorrect" :numTotal="numTotal" />
 
     <b-container class="bv-example-row">
       <b-row>
         <b-col sm="6" offset="3">
-         <QuestionBox
+          <QuestionBox
             v-if="questions.length"
             :currentQuestion="questions[index]"
             :next="next"
             :increment="increment"
           />
         </b-col>
+
       </b-row>
     </b-container>
-    </div>
+    
+  </div>
 </template>
 
 <script>
- import Header from './Header.vue'
-import QuestionBox from './QuestionBox.vue'
+import Header from "./Header.vue";
+import QuestionBox from "./QuestionBox.vue";
+import Snippet from "./Snippet";
 
 export default {
-  name: 'Home',
-   created()
-  {
-      let user = localStorage.getItem('user-info');
-      if(!user)
-      {
-         this.$router.push({name:'SignUp'}) 
-      }
+  name: "Home",
+  created() {
+    let user = localStorage.getItem("user-info");
+    if (!user) {
+      this.$router.push({ name: "SignUp" });
+    }
   },
   components: {
-     Header,
+    Header,
     QuestionBox,
+    Snippet,
+    
   },
   data() {
     return {
@@ -41,36 +45,42 @@ export default {
       index: 0,
       numCorrect: 0,
       numTotal: 0,
-    }
+      loader: true,
+    };
   },
   methods: {
     next() {
-        this.index++
-       if(this.index<=10){
-         
-        this.numTotal++
+      this.index++;
+      if (this.index <= 10) {
+        this.numTotal++;
+      
       }
-       
     },
+  
+  
     increment(isCorrect) {
       if (isCorrect) {
-        this.numCorrect++
+        this.numCorrect++;
       }
       // this.numTotal++
-    }
+    },
   },
-  mounted: function() {
-    fetch('https://opentdb.com/api.php?amount=10&category=27&type=multiple', {
-      method: 'get'
+  mounted() {
+    this.loader = true;
+    fetch("https://opentdb.com/api.php?amount=10&category=27&type=multiple", {
+      method: "get",
     })
       .then((response) => {
-        return response.json()
+        return response.json();
       })
       .then((jsonData) => {
-        this.questions = jsonData.results
-      })
-  }
-}
+        this.loader = false;
+        this.questions = jsonData.results;
+      });
+  },
+
+  
+};
 </script>
 
 <style>

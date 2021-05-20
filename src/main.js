@@ -9,11 +9,14 @@ import VueRouter from 'vue-router'
  import App from './App.vue'
 import signUp from './components/signUp'
 import Home from './components/Home'
+// import Result from './components/Result'
+
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 const routes = [
   {path: '/app', name: 'Home',component:Home},
  {path: '/', name: 'SignUp',component:signUp},
+//  {path: '/result', name: 'Result', component: Result}
 ]
 
 const router = new VueRouter({
