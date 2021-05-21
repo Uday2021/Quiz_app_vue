@@ -31,7 +31,7 @@
       
     </b-jumbotron>
      <br>
-     <b-button @click="result" variant="warning" >
+     <b-button @click="result" variant="danger" >
         Submit
       </b-button>
   </div>

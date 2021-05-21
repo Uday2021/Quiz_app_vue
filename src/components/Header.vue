@@ -53,6 +53,6 @@ export default {
 
 <style scoped>
 button {
-  margin-left: 1000px;
+  margin-left: 0px;
 }
 </style>
