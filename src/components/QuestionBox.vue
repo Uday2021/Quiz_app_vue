@@ -23,12 +23,17 @@
         @click="submitAnswer"
         :disabled="selectedIndex === null || answered"
       >
-        Submit
+        Check
       </b-button>
-      <b-button @click="clickNext();" variant="success">
+      <b-button @click="clickNext()" variant="success">
         Next
       </b-button>
+      
     </b-jumbotron>
+     <br>
+     <b-button @click="result" variant="warning" >
+        Submit
+      </b-button>
   </div>
 
   
@@ -36,13 +41,17 @@
 
 <script>
 import _ from 'lodash'
+// import Result from './Result'
 
 export default {
   props: {
     currentQuestion: Object,
     next: Function,
-    increment: Function
+    increment: Function,
+    numTotal: Number,
+    numCorrect:Number,
   },
+
   data: function() {
     return {
       selectedIndex: null,
@@ -76,9 +85,11 @@ export default {
       this.selectedIndex = index
     },
 
-    printResult(){
-       
-    },
+      result() {
+       console.log(this.numTotal , this.numCorrect);
+        this.$router.push({ name: "Result",query: { numTotal:this.numTotal,numCorrect:this.numCorrect } });
+    
+     },
        
 
     submitAnswer() {

@@ -11,6 +11,8 @@
             :currentQuestion="questions[index]"
             :next="next"
             :increment="increment"
+            :numCorrect="numCorrect"
+            :numTotal="numTotal"
           />
         </b-col>
 
